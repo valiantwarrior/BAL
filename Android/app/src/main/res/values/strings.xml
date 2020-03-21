@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BAL_ANDROID</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="title_routine_name">Sample Schedules</string>
+    <string name="title_session_today">Today</string>
+    <string name="title_session_entire">Entire</string>
+    <string name="title_user_info">PR</string>
+
+</resources>
