@@ -30,3 +30,5 @@ daily_routine.assistance_exercises = {'Category' : 'Pull up', 'Volume' : '5x12'}
 print(daily_routine.lifting_set_list[0].session)
 print(daily_routine.day)
 print(daily_routine.assistance_exercises)
+
+print('a')
