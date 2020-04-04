@@ -2,3 +2,4 @@
 
 cd Android
 gradlew.bat installDebug
+
