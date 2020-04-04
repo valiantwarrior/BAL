@@ -7,13 +7,17 @@ class BALLiftingSet :
         self.__reps: List = []
         self.__session: Dict = {}
 
+        '''
         for index in range(1,7) :
             self.__session.setdefault('set%s' % index)
+        '''
 
 
     def init_lifting_set(self, category:str, session_list: List, reps_list: List ) :
         self.lifting_category = category
         self.reps = reps_list
+        for index in range(1, len(reps_list) + 1) :
+            self.__session.setdefault('set%s' % index)
         self.session = session_list
         self.__clear()
 

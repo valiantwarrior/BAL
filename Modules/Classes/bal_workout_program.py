@@ -24,15 +24,36 @@ class BALWorkoutProgram :
     def training_day(self, training_day_list) :
         self.__training_day = training_day_list
     
-
-    def get_author(self) :
+    @property
+    def author(self) : 
         return self.__author
     
-    def get_num_of_training(self) :
+    @author.setter
+    def author(self, author) :
+        self.__author = author
+    
+    @property
+    def num_of_training(self) :
         return self.__num_of_training
     
-    def get_weight_unit(self) :
+    @num_of_training.setter
+    def num_of_training(self, num) :
+        self.__num_of_training = num
+    
+    @property
+    def weight_unit(self) :
         return self.__weight_unit
     
-    def get_program_name(self) :
+    @weight_unit.setter
+    def weight_unit(self, weight_unit) :
+        self.__weight_unit = weight_unit
+
+    @property
+    def program_name(self) :
         return self.__program_name
+    
+    @program_name.setter
+    def program_name(self, name) :
+        self.__program_name = name
+
+   
