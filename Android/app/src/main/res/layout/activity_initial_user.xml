@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sample_splash"
-    android:backgroundTint="#40FFFFFF"
+    android:background="@drawable/sample_initial"
+    android:backgroundTint="#05FFFFFF"
     android:backgroundTintMode="src_over"
     tools:context=".InitialUserActivity">
-
 
     <TextView
         android:id="@+id/welcome_title"
@@ -17,7 +16,7 @@
         android:layout_marginTop="64dp"
         android:text="Welcome !"
         android:textColor="@android:color/background_light"
-        android:textSize="48dp"
+        android:textSize="64dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/welcome_message"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="1dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="48dp"
         app:cardBackgroundColor="@android:color/transparent"
         app:cardCornerRadius="3dp"
         app:cardElevation="5dp"
@@ -66,7 +65,7 @@
                 android:paddingBottom="5dp"
                 android:text="Benchpress PR"
                 android:textColor="@android:color/background_light"
-                android:textSize="25dp"
+                android:textSize="28dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -87,7 +86,7 @@
                 android:paddingBottom="5dp"
                 android:text="Deadlift PR"
                 android:textColor="@android:color/background_light"
-                android:textSize="25dp"
+                android:textSize="28dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -108,7 +107,7 @@
                 android:paddingBottom="5dp"
                 android:text="Squat PR"
                 android:textColor="@android:color/background_light"
-                android:textSize="25dp"
+                android:textSize="28dp"
                 android:textStyle="bold" />
 
             <TextView
