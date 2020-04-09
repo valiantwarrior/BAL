@@ -12,6 +12,8 @@ from Modules.Classes import bal_workout_program as wp
 
 EXCEL_SHEET_DIR = "../test.xlsx"
 
+num_lifting_category = len(Scraper.bal_get_lifting_category(sheet))
+
 def init_workout_program() :
     
     sheet = Scraper.bal_load_excel(EXCEL_SHEET_DIR)
@@ -25,9 +27,12 @@ def init_workout_program() :
 
     workout_program.training_day = Scraper.bal_get_training_days(sheet)
 
-    # 
-    # Additional Code here
-    #
+    index = 0
+    while index < len(workout_program.training_day) :
+        workout_program_data.append(init_daily_routine(index*num_lifting_category, workout_program.training_day[index]))
+        index += 1
+
+    workout_program.routines_list = workout_program_data
 
     return workout_program
 
@@ -45,8 +50,29 @@ def init_lifting_set(position) :
 
 
 # RET : bal_daily_routine
-def init_daily_routine(position) :
+def init_daily_routine(position, day) :
+    # using init_lifting_set(position)
+    sheet = Scraper.bal_load_excel(EXCEL_SHEET_DIR)
     
-    # using init_lifting_set(position) 
+    
+    daily_routine = dr.BALDailyRoutine()
+    daily_routine.day = day
+    daily_routine.assistance_exercises = Scraper.bal_get_assistance_exercise(sheet, position/num_lifting_category)
+    for index in range(position, position + num_lifting_category):
+        if init_lifting_set(index) is None:
+            break
+        else:
+            daily_routine_data.append(init_lifting_set(index))
+        
+    daily_routine.lifting_set_list = daily_routine_data
+    
 
-    pass
+    return daily_routine
+
+
+
+
+
+
+
+
