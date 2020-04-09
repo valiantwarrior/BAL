@@ -28,15 +28,15 @@ def xml_modification(target, old, new) :
 
 def main() :
     
-    copy_android_project()
+    #copy_android_project()
 
     wp = extractor.init_workout_program()
     
-    xml_modification(SPLASH_ACTIVITY_XML, DEFAULT_ROUTINE_NAME, wp.program_name)
-    xml_modification(SPLASH_ACTIVITY_XML, DEFUALT_AUTHOR_NAME, wp.author)
-    xml_modification(VALUES_STRINGS_XML, DEFAULT_ROUTINE_NAME, wp.program_name)
+    #xml_modification(SPLASH_ACTIVITY_XML, DEFAULT_ROUTINE_NAME, wp.program_name)
+    #xml_modification(SPLASH_ACTIVITY_XML, DEFUALT_AUTHOR_NAME, wp.author)
+    #xml_modification(VALUES_STRINGS_XML, DEFAULT_ROUTINE_NAME, wp.program_name)
 
-    subprocess.call('build.bat')
+    #subprocess.call('build.bat')
     
 
 if __name__ == "__main__" :
