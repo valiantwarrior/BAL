@@ -25,9 +25,14 @@ def init_workout_program() :
 
     workout_program.training_day = Scraper.bal_get_training_days(sheet)
 
+    # 
+    # Additional Code here
+    #
+
     return workout_program
 
 
+# RET : bal_lifting_set
 def init_lifting_set(position) :
 
     sheet = Scraper.bal_load_excel(EXCEL_SHEET_DIR)
@@ -39,5 +44,9 @@ def init_lifting_set(position) :
     return lifting_set
 
 
+# RET : bal_daily_routine
 def init_daily_routine(position) :
+    
+    # using init_lifting_set(position) 
+
     pass
