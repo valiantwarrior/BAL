@@ -1,9 +1,3 @@
-'''
-import Modules.Scraper.bal_excel_scraper as Scraper
-import Modules.Classes.bal_daily_routine as dr
-import Modules.Classes.bal_lifting_set as ls
-import Modules.Classes.bal_workout_program as wp
-'''
 
 from Modules.Scraper import bal_excel_scraper as Scraper
 from Modules.Classes import bal_daily_routine as dr
@@ -11,14 +5,13 @@ from Modules.Classes import bal_lifting_set as ls
 from Modules.Classes import bal_workout_program as wp
 
 EXCEL_SHEET_DIR = "../test.xlsx"
-
+RELATIVE_POSITION = 3
 
 
 def init_workout_program() :
     
     sheet = Scraper.bal_load_excel(EXCEL_SHEET_DIR)
-    num_lifting_category = len(Scraper.bal_get_lifting_category(sheet))
-   
+    
     
     workout_program = wp.BALWorkoutProgram(
         Scraper.bal_get_author(sheet),
@@ -32,7 +25,7 @@ def init_workout_program() :
     index = 0
     workout_program_data=[]
     while index < len(workout_program.training_day) :
-        workout_program_data.append(init_daily_routine(index*num_lifting_category, workout_program.training_day[index]))
+        workout_program_data.append(init_daily_routine(index * RELATIVE_POSITION, workout_program.training_day[index]))
         index += 1
 
     workout_program.routines_list = workout_program_data
@@ -40,7 +33,7 @@ def init_workout_program() :
     return workout_program
 
 
-# RET : bal_lifting_set
+
 def init_lifting_set(position) :
 
     sheet = Scraper.bal_load_excel(EXCEL_SHEET_DIR)
@@ -53,18 +46,17 @@ def init_lifting_set(position) :
     return lifting_set
 
 
-# RET : bal_daily_routine
+
 def init_daily_routine(position, day) :
-    # using init_lifting_set(position)
+    
     sheet = Scraper.bal_load_excel(EXCEL_SHEET_DIR)
-    num_lifting_category = len(Scraper.bal_get_lifting_category(sheet))
     
     
     daily_routine = dr.BALDailyRoutine()
     daily_routine.day = day
-    daily_routine.assistance_exercises = Scraper.bal_get_assistance_exercise(sheet, int(position/num_lifting_category))
+    daily_routine.assistance_exercises = Scraper.bal_get_assistance_exercise(sheet, int(position/3))
     daily_routine_data = []
-    for index in range(position, position + num_lifting_category):
+    for index in range(position, position + RELATIVE_POSITION):
         if init_lifting_set(index) is None:
             break
         else:
