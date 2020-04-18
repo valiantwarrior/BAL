@@ -1,11 +1,10 @@
 import re
 import sys
-
+import decimal
 
 op=['+','-','*','/','(',')',',','round', '=']
 
 
-#문자열 토큰화
 def tokenize(expStr):
 
 
@@ -97,6 +96,71 @@ def expr_to_postfix(expr):
 
     while stack:
         result.append(stack.pop())
+    
+    for i in range(0, len(result)) :
+        result[i] = convert_str2num(result[i])
+
     print(result)
+
+    return result
+
+
+def inputs(postfix) :
+    
+    ret = []
+    p = re.compile('[a-zA-Z]+[0-9]*')
+    for c in postfix :
+        if p.match(c) and c not in op :
+            ret.append(c)
+
+    return ret
+
+
+def convert_str2num(str) :
+    int_p = re.compile('[1-9]+[0-9]*')
+    float_p = re.compile('[1-9]*[0-9]+\.[0-9]*')
+
+    if float_p.match(str) :
+        return float(str)
+    
+    if int_p.match(str) :
+        return int(str)
+
+    return str
+    
+
+def operation(operand1, operand2, operator) :
+    
+    if operator == '+' :
+        return operand1 + operand2
+    elif operator == '-' :
+        return operand1 - operand2
+    elif operator == '*' :
+        return operand1 * operand2
+    elif operator == '/' :
+        return operand1 / operand2
+    elif operator == 'round' :
+        return int(operand1) + 1 if (operand1 - int(operand1)) >= 0.5 else int(operand1)
+    else :
+        pass
+
+
+def calculate(postfix, inputs) :
+
+    index = postfix.index('bpint')
+    postfix[index] = inputs
+    stack = []
+
+    for i in range(0, len(postfix)) :
+        if postfix[i] in op :
+            param2 = stack.pop()
+            param1 = stack.pop()
+            inner = operation(param1, param2, postfix[i])
+            stack.append(inner)
+        else :
+            stack.append(postfix[i])
+
+    result = stack.pop()
+
     return result
 

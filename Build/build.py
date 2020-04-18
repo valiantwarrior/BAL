@@ -1,10 +1,12 @@
-
+import pprint
 import subprocess
 import sys, os
+import jsonpickle
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 
 from Modules import extraction as extractor
+from Modules.Classes import bal_workout_program
 
 DEFAULT_ROUTINE_NAME = "Sample Schedules"
 DEFUALT_AUTHOR_NAME = "Dmitry klokov"
@@ -14,6 +16,9 @@ VALUES_STRINGS_XML = "Android/app/src/main/res/values/strings.xml"
 def copy_android_project() :
     
     subprocess.call('xcopy ..\\Android\\* Android\\* /e /h /k /y')
+
+def copy_json() :
+    subprocess.call('xcopy wp.json Android\\app\\src\\main\\python /h /k /y')
 
 
 def xml_modification(target, old, new) :
@@ -28,15 +33,18 @@ def xml_modification(target, old, new) :
 
 def main() :
     
-    #copy_android_project()
+    copy_android_project()
+
 
     wp = extractor.init_workout_program()
+    encode = jsonpickle.encode(wp)
+  
+    with open('wp.json', mode='w', encoding='utf-8') as f :
+        f.write(encode)
     
-    #xml_modification(SPLASH_ACTIVITY_XML, DEFAULT_ROUTINE_NAME, wp.program_name)
-    #xml_modification(SPLASH_ACTIVITY_XML, DEFUALT_AUTHOR_NAME, wp.author)
-    #xml_modification(VALUES_STRINGS_XML, DEFAULT_ROUTINE_NAME, wp.program_name)
-
-    #subprocess.call('build.bat')
+    copy_json()
+    
+    subprocess.call('build.bat')
     
 
 if __name__ == "__main__" :
