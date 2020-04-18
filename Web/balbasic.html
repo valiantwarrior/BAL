@@ -23,14 +23,17 @@
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	
 	<script>
-	function uploadtest(){
-		alert("업로드버튼 테스트");
-	}	
+	
+
+
 	</script>
+	
+		
+		
 </head>
 
 <body>
-	<div class="image-container:before " style="background-image: url('assets/img/background.jpg')">
+	<div class="image-container " style="background-image: url('assets/img/background.jpg')">
 	    <!--   Creative Tim Branding   -->
 	  
 
@@ -66,31 +69,19 @@
 
 		                        <div class="tab-content">
 		                            <div class="tab-pane" id="Upload">
-		                            	<div class="row">
-		                                	<div class="col-sm-12">
-		                                    	<h4 class="info-text"> Upload your routine</h4>
-		                                	</div>
-		                                	<div class="col-sm-5 col-sm-offset-1">
-		                                    	<div class="form-group label-floating">
-		                                        	<label class="control-label">Author</label>
-		                                        	<input type="text" class="form-control" id="exampleInputEmail1">
-                                          	</div>
-                                          
-                                      </div>
-                                      <div class="col-sm-5 col-sm-offset-1">
-		                                    	<div class="form-group label-floating">
-		                                        	<label class="control-label">Program name</label>
-		                                        	<input type="text" class="form-control" id="exampleInputEmail1">
-                                          </div>
-                                          <label for="avatar">Choose a excel file:</label>
-
-                                          <input type="file" id="avatar" name="avatar" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
-										  <button class="btn btn-success" onclick="uploadtest()">UPLOAD</button>
-		                                	</div>
-		                                
-		                                	
-		                                	
-		                            	</div>
+										<h4 class="info-text">Upload template excel file </h4>
+										
+												<a class="picture-container" onclick="document.getElementById('uploadfile').click();">
+													
+		                                        	<div class="picture">
+														<input type="file" id="uploadfile" style="display:none;" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                                        				<img src="assets/img/excel-icon.png" class="picture-src" id="wizardPicturePreview" title=""/>
+		                                            	
+													</div>
+													
+		                                        	<h6>Click to upload</h6>
+		                                    	</a>
+										
 		                            </div>
 		                            <div class="tab-pane" id="Download">
 										<h4 class="info-text">Download template excel file </h4>
